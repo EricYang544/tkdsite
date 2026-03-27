@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}한국외대 태권도부{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="{% url 'main:index' %}" class="nav-logo">
+            <div class="logo-circle">외대</div>
+            <div class="logo-text">
+                <span class="logo-sub">한국외국어대학교</span>
+                <span class="logo-main">태권도부</span>
+            </div>
+        </a>
+    </div>
+<div class="nav-right">
+    <a href="{% url 'main:about' %}">태권도부 소개</a>
+    <a href="{% url 'board:member_list' %}">임원진 소개</a>
+    <a href="{% url 'board:gallery_list' %}">갤러리</a>
+    <a href="{% url 'board:activity_list' %}">활동 정보</a>
+    <a href="{% url 'board:notice_list' %}">공지사항</a>
+</div>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <span>© 2026 한국외국어대학교 태권도부</span>
+        <span class="footer-dev">Developed by 양수찬 · <a href="mailto:ericyang@hufs.ac.kr">ericyang@hufs.ac.kr</a></span>
+    </div>
+</footer>
+
+</body>
+</html>

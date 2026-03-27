@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{ notice.title }}{% endblock %}
+{% block content %}
+
+<div class="page-container">
+    <div class="detail-header">
+        <h1>{{ notice.title }}</h1>
+        <span class="date">{{ notice.created_at|date:"Y년 m월 d일" }}</span>
+    </div>
+    <div class="detail-content">
+        {{ notice.content|linebreaksbr }}
+        {% if notice.images.all %}
+        <div class="detail-images">
+            {% for img in notice.images.all %}
+            <img src="{{ img.image.url }}" alt="공지 이미지" class="detail-image">
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <a href="{% url 'board:notice_list' %}" class="btn-back">← 목록으로</a>
+</div>
+
+{% endblock %}

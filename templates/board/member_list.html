@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}임원진 소개{% endblock %}
+{% block content %}
+
+<div class="page-container">
+    <h1 class="page-title">임원진 소개</h1>
+
+    <div class="member-grid">
+        {% for member in members %}
+        <div class="member-card">
+            {% if member.photo %}
+                <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+            {% else %}
+                <div class="member-no-photo">👤</div>
+            {% endif %}
+            <div class="member-info">
+                <span class="member-role">{{ member.get_role_display }}</span>
+                <h3 class="member-name">{{ member.name }}</h3>
+                <p class="member-dept">{{ member.department }}</p>
+                <p class="member-dept">{{ member.generation }}기</p>
+                {% if member.belt %}
+                <p class="member-belt">🥋 {{ member.get_belt_display }}</p>
+                {% endif %}
+                {% if member.intro %}
+                <p class="member-intro">"{{ member.intro }}"</p>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p>등록된 임원진이 없습니다.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

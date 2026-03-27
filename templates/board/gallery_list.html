@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}갤러리{% endblock %}
+{% block content %}
+
+<div class="page-container">
+    <h1 class="page-title">갤러리</h1>
+    <div class="gallery-grid">
+        {% for photo in photos %}
+        <div class="gallery-item">
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
+            <p>{{ photo.title }}</p>
+        </div>
+        {% empty %}
+        <p>사진이 없습니다.</p>
+        {% endfor %}
+    </div>
+
+    <!-- 페이지네이션 -->
+    <div class="pagination">
+        {% if photos.has_previous %}
+        <a href="?page={{ photos.previous_page_number }}">&laquo; 이전</a>
+        {% endif %}
+
+        {% for num in photos.paginator.page_range %}
+        {% if photos.number == num %}
+        <span class="page-current">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if photos.has_next %}
+        <a href="?page={{ photos.next_page_number }}">다음 &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

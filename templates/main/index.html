@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}한국외대 태권도부{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-sub">HUFS Taekwondo Club</p>
+        <h1 class="hero-title">한국외대 태권도부</h1>
+    </div>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <div class="card-header">
+            <h2>공지사항</h2>
+            <a href="{% url 'board:notice_list' %}" class="card-plus">+</a>
+        </div>
+        <ul class="card-list">
+            {% for notice in notices %}
+            <li>
+                <a href="{% url 'board:notice_detail' notice.pk %}">
+                    {% if notice.is_new %}<span class="badge">N</span>{% endif %}
+                    {{ notice.title }}
+                </a>
+                <span class="date">{{ notice.created_at|date:"Y.m.d" }}</span>
+            </li>
+            {% empty %}
+            <li>공지사항이 없습니다.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>활동 소식</h2>
+            <a href="{% url 'board:activity_list' %}" class="card-plus">+</a>
+        </div>
+        <ul class="card-list">
+            {% for activity in activities %}
+            <li>
+                <a href="{% url 'board:activity_detail' activity.pk %}">
+                    {% if activity.is_new %}<span class="badge">N</span>{% endif %}
+                    {{ activity.title }}
+                </a>
+                <span class="date">{{ activity.created_at|date:"Y.m.d" }}</span>
+            </li>
+            {% empty %}
+            <li>활동 소식이 없습니다.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

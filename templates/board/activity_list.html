@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}활동 정보{% endblock %}
+{% block content %}
+
+<!-- 연간 일정 -->
+<div class="page-container">
+    <h1 class="page-title">연간 활동 일정</h1>
+    <div class="schedule-list">
+        <div class="schedule-item">
+            <h3>3월 - 신입부원 모집</h3>
+            <p>신입 부원 모집 및 개강 파티</p>
+        </div>
+        <div class="schedule-item">
+            <h3>5월 - 태권도부 MT</h3>
+            <p>1박 2일 MT를 통한 친목 도모</p>
+        </div>
+        <div class="schedule-item">
+            <h3>9월 - 신입부원 2차 모집</h3>
+            <p>신입 부원 모집 및 개강 파티</p>
+        </div>
+        <div class="schedule-item">
+            <h3>11월 - 전국 대학 태권도 동아리 선수권 대회</h3>
+            <p>전국 대학 태권도 동아리 선수권 대회 참가</p>
+        </div>
+        <div class="schedule-item">
+            <h3>12월 - 태권도부 홈커밍</h3>
+            <p>OB 선배님들과 YB 동아리 부원들 간의 교류</p>
+        </div>
+    </div>
+</div>
+
+<!-- 활동 보고 -->
+<div class="page-container">
+    <h1 class="page-title">활동 보고</h1>
+    <table class="board-table">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in activities %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    {% if activity.is_new %}<span class="badge">N</span>{% endif %}
+                    <a href="{% url 'board:activity_detail' activity.pk %}">{{ activity.title }}</a>
+                </td>
+                <td>{{ activity.created_at|date:"Y.m.d" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3">활동 소식이 없습니다.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {% if activities.has_previous %}
+        <a href="?page={{ activities.previous_page_number }}">&laquo; 이전</a>
+        {% endif %}
+
+        {% for num in activities.paginator.page_range %}
+        {% if activities.number == num %}
+        <span class="page-current">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if activities.has_next %}
+        <a href="?page={{ activities.next_page_number }}">다음 &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

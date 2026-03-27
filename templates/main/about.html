@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}태권도부 소개{% endblock %}
+{% block content %}
+
+<!-- 히어로 -->
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-sub">About Us</p>
+        <h1 class="hero-title">태권도부 소개</h1>
+    </div>
+</section>
+
+<div class="about-container">
+
+    <!-- 인사말 -->
+    <div class="about-section">
+        <h2 class="section-title">인사말</h2>
+        <div class="info-box">
+            <p class="about-text">안녕하십니까. 한국외국어대학교 태권도부를 방문해 주셔서 감사합니다.</p>
+            <p class="about-text">본 태권도부는 1984년 창단 이래 40년의 역사와 전통을 자랑하며, 대한민국을 대표하는 무도인 태권도의 정신과 기술을 전수하고 있습니다.</p>
+            <p class="about-text">매주 진행하는 정기 훈련 및 타학교 태권도부와의 교류전을 통해 태권도 기술을 연마합니다.</p>
+            <p class="about-text" style="margin-bottom: 0;">우리 부는 단순한 운동 동아리를 넘어, 심신 수련과 인성 함양을 통해 글로벌 리더로 성장할 수 있는 기반을 제공합니다.</p>
+        </div>
+    </div>
+
+    <!-- 사진 그리드 -->
+    <div class="about-image-grid">
+        <div class="about-image-wrap">
+            <img src="https://images.unsplash.com/photo-1771909718960-7fab338a09d3?w=800" alt="태권도 훈련">
+        </div>
+        <div class="about-image-wrap">
+            <img src="https://images.unsplash.com/photo-1529630218527-7df22fc2d4ee?w=800" alt="태권도 겨루기">
+        </div>
+    </div>
+
+    <!-- 활동 특징 -->
+    <div class="about-section">
+        <h2 class="section-title">활동 특징</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🥋</div>
+                <h3>체계적인 훈련</h3>
+                <p>훈련부장의 지도 아래 기본기부터</p>
+                <p>고급 기술까지 단계별 훈련</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>대회 참가</h3>
+                <p>전국 대학 태권도 동아리 선수권 대회 출전 및 입상 경험</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>네트워킹</h3>
+                <p>선후배 간의 돈독한</p>
+                <p>유대관계 형성 및 평생 인연</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 운영 정보 -->
+    <div class="about-section">
+        <h2 class="section-title">운영 정보</h2>
+        <div class="info-box">
+            <div class="info-row">
+                <span class="info-label">훈련 시간</span>
+                <span class="info-value">매주 월, 수 17:00 - 19:00</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">훈련 장소</span>
+                <span class="info-value">한국외대 교수학습개발원 지하 무용실</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">동아리방 위치</span>
+                <span class="info-value">한국외대 교수학습개발원 지하 004호(2004)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">연락처</span>
+                <span class="info-value">010-4765-3686 (회장)</span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
